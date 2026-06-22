@@ -1,0 +1,4 @@
+*.exe
+/ollama
+bin/
+.DS_Store

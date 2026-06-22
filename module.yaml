@@ -1,0 +1,27 @@
+apiVersion: botmother.module/v1
+
+module:
+  id: ollama
+  name: Ollama
+  version: 0.1.0
+  description: Ollama orqali lokal/self-hosted LLM modellariga murojaat (llama3.2, qwen2.5, gemma3, mistral...).
+  author: yourname
+  icon: brain-circuit
+
+source:
+  github: https://github.com/BotSpace/ollama-module
+
+runtime:
+  dockerfile: Dockerfile
+  port: 8100
+  healthcheck: /health
+
+contract:
+  jsonrpc: "2.0"
+  endpoint: /rpc
+  methods: [describe, node.execute, trigger.match, docs]
+
+provides:
+  nodes:
+    - type: ollama.Chat
+      trigger: false
