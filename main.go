@@ -184,6 +184,7 @@ func errResult(msg string) botmodule.Result {
 			"llm_error":  msg,
 		},
 		ExitOutput: "error",
+		Error:      msg, // UI error list + alert'da ko'rsatiladi
 	}
 }
 
