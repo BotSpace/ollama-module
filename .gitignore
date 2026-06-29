@@ -2,3 +2,4 @@
 /ollama
 bin/
 .DS_Store
+ollama-module
