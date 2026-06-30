@@ -148,8 +148,8 @@ func executeChat(c *botmodule.ExecuteCtx) botmodule.Result {
 	}
 
 	var out struct {
-		Model           string `json:"model"`
-		Message         struct {
+		Model   string `json:"model"`
+		Message struct {
 			Content string `json:"content"`
 		} `json:"message"`
 		PromptEvalCount int    `json:"prompt_eval_count"`
@@ -184,7 +184,10 @@ func errResult(msg string) botmodule.Result {
 			"llm_error":  msg,
 		},
 		ExitOutput: "error",
-		Error:      msg, // UI error list + alert'da ko'rsatiladi
+		Alerts: []botmodule.Alert{{
+			Level:   botmodule.AlertError,
+			Message: msg,
+		}},
 	}
 }
 
